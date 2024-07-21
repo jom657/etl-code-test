@@ -244,7 +244,7 @@ def main():
     # Load the data into a SQLite
     etl_processor.load_data_to_db()
     
-    # etl_processor.export_to_csv()
+    etl_processor.export_to_csv()
     
 if __name__ == '__main__':
     main()
