@@ -1,0 +1,232 @@
+2024-07-21 17:52:28,654:INFO:Initialized ETLProcessor.
+2024-07-21 17:52:28,659:INFO:Loaded 5 records from users-1.csv.
+2024-07-21 17:52:28,659:INFO:Loaded 84 records from transactions-1.csv.
+2024-07-21 17:52:28,660:INFO:Loaded 6 records from pricing-1.csv.
+2024-07-21 17:52:28,660:INFO:First few rows of the transactions dataframe:
+2024-07-21 17:52:28,660:INFO:   trans_id  user_id     product amount trans_date
+0      1014        1  Samsung TV    599   4/1/2022
+1      1015        2        iPad    499   4/5/2022
+2      1016        3     Macbook   1299  4/10/2022
+3      1017        4      iPhone    999  4/15/2022
+4      1018        5  Samsung TV    599  4/20/2022
+2024-07-21 17:52:28,664:INFO:
+Data types of each column:
+2024-07-21 17:52:28,664:INFO:trans_id       int64
+user_id        int64
+product       object
+amount        object
+trans_date    object
+dtype: object
+2024-07-21 17:52:28,665:INFO:
+Missing values in each column:
+2024-07-21 17:52:28,665:INFO:trans_id      0
+user_id       0
+product       0
+amount        0
+trans_date    1
+dtype: int64
+2024-07-21 17:52:28,665:INFO:
+Summary statistics for numeric columns:
+2024-07-21 17:52:28,668:INFO:          trans_id    user_id
+count    84.000000  84.000000
+mean   1055.500000   3.654762
+std      24.392622   2.192507
+min    1014.000000   1.000000
+25%    1034.750000   2.000000
+50%    1055.500000   3.000000
+75%    1076.250000   5.000000
+max    1097.000000   9.000000
+2024-07-21 17:52:28,671:INFO:
+Unique value counts for categorical columns:
+2024-07-21 17:52:28,672:INFO:trans_id      84
+user_id        9
+product        5
+amount         7
+trans_date    83
+dtype: int64
+2024-07-21 17:52:28,672:INFO:
+Potential data quality issues in the 'amount' column:
+2024-07-21 17:52:28,673:INFO:    trans_id      amount
+22      1036  10/17/2022
+30      1044       49..9
+2024-07-21 17:52:28,676:INFO:
+Potential data quality issues in the 'trans_date' column:
+2024-07-21 17:52:28,679:INFO:    trans_id trans_date
+22      1036        NaN
+2024-07-21 17:52:28,690:WARNING:Found 1 row/s with valid dates in 'amount' and invalid 'trans_date' values.
+2024-07-21 17:52:28,690:INFO:Transferred dates from 'amount' to 'trans_date' where 'trans_date' was invalid.
+2024-07-21 17:52:28,691:WARNING:Found 2 row/s with non-numeric 'amount' values.
+2024-07-21 17:52:28,692:INFO:Corrected non-numeric 'amount' values based on 'product' prices.
+2024-07-21 17:52:28,693:WARNING:Found 13 transactions with missing user_ids.
+2024-07-21 17:52:28,693:WARNING:Missing user_ids: [6 7 8 9]
+2024-07-21 17:52:28,694:INFO:First few rows of the transactions dataframe:
+2024-07-21 17:52:28,694:INFO:   trans_id  user_id     product  amount trans_date
+0      1014        1  Samsung TV     599 2022-04-01
+1      1015        2        iPad     499 2022-04-05
+2      1016        3     Macbook    1299 2022-04-10
+3      1017        4      iPhone     999 2022-04-15
+4      1018        5  Samsung TV     599 2022-04-20
+2024-07-21 17:52:28,698:INFO:
+Data types of each column:
+2024-07-21 17:52:28,699:INFO:trans_id               int64
+user_id                int64
+product               object
+amount                 int64
+trans_date    datetime64[ns]
+dtype: object
+2024-07-21 17:52:28,699:INFO:
+Missing values in each column:
+2024-07-21 17:52:28,700:INFO:trans_id      0
+user_id       0
+product       0
+amount        0
+trans_date    0
+dtype: int64
+2024-07-21 17:52:28,701:INFO:
+Summary statistics for numeric columns:
+2024-07-21 17:52:28,709:INFO:          trans_id    user_id       amount                     trans_date
+count    71.000000  71.000000    71.000000                             71
+mean   1054.380282   2.929577   708.577465  2023-04-25 09:27:53.239436544
+min    1014.000000   1.000000    89.000000            2022-04-01 00:00:00
+25%    1033.500000   2.000000   499.000000            2022-09-24 12:00:00
+50%    1055.000000   3.000000   599.000000            2023-05-02 00:00:00
+75%    1075.500000   4.000000   999.000000            2023-11-24 12:00:00
+max    1097.000000   5.000000  1299.000000            2024-06-15 00:00:00
+std      24.484611   1.417482   405.650929                            NaN
+2024-07-21 17:52:28,712:INFO:
+Unique value counts for categorical columns:
+2024-07-21 17:52:28,713:INFO:trans_id      71
+user_id        5
+product        5
+amount         5
+trans_date    71
+dtype: int64
+2024-07-21 17:52:28,713:INFO:
+Potential data quality issues in the 'amount' column:
+2024-07-21 17:52:28,714:INFO:Empty DataFrame
+Columns: [trans_id, amount]
+Index: []
+2024-07-21 17:52:28,715:INFO:
+Potential data quality issues in the 'trans_date' column:
+2024-07-21 17:52:28,716:INFO:Empty DataFrame
+Columns: [trans_id, trans_date]
+Index: []
+2024-07-21 17:52:28,720:INFO:Transformed data for users with total amount spent by each user.
+2024-07-21 17:52:28,724:INFO:No new transactions to append.
+2024-07-21 17:52:28,753:INFO:Loaded data into the database d:\1Python Script\Data Engineer\database\etl_database.db.
+2024-07-21 17:52:36,618:INFO:Initialized ETLProcessor.
+2024-07-21 17:52:36,623:INFO:Loaded 5 records from users-1.csv.
+2024-07-21 17:52:36,623:INFO:Loaded 84 records from transactions-1.csv.
+2024-07-21 17:52:36,623:INFO:Loaded 6 records from pricing-1.csv.
+2024-07-21 17:52:36,623:INFO:First few rows of the transactions dataframe:
+2024-07-21 17:52:36,623:INFO:   trans_id  user_id     product amount trans_date
+0      1014        1  Samsung TV    599   4/1/2022
+1      1015        2        iPad    499   4/5/2022
+2      1016        3     Macbook   1299  4/10/2022
+3      1017        4      iPhone    999  4/15/2022
+4      1018        5  Samsung TV    599  4/20/2022
+2024-07-21 17:52:36,628:INFO:
+Data types of each column:
+2024-07-21 17:52:36,628:INFO:trans_id       int64
+user_id        int64
+product       object
+amount        object
+trans_date    object
+dtype: object
+2024-07-21 17:52:36,629:INFO:
+Missing values in each column:
+2024-07-21 17:52:36,629:INFO:trans_id      0
+user_id       0
+product       0
+amount        0
+trans_date    1
+dtype: int64
+2024-07-21 17:52:36,629:INFO:
+Summary statistics for numeric columns:
+2024-07-21 17:52:36,632:INFO:          trans_id    user_id
+count    84.000000  84.000000
+mean   1055.500000   3.654762
+std      24.392622   2.192507
+min    1014.000000   1.000000
+25%    1034.750000   2.000000
+50%    1055.500000   3.000000
+75%    1076.250000   5.000000
+max    1097.000000   9.000000
+2024-07-21 17:52:36,635:INFO:
+Unique value counts for categorical columns:
+2024-07-21 17:52:36,635:INFO:trans_id      84
+user_id        9
+product        5
+amount         7
+trans_date    83
+dtype: int64
+2024-07-21 17:52:36,636:INFO:
+Potential data quality issues in the 'amount' column:
+2024-07-21 17:52:36,637:INFO:    trans_id      amount
+22      1036  10/17/2022
+30      1044       49..9
+2024-07-21 17:52:36,639:INFO:
+Potential data quality issues in the 'trans_date' column:
+2024-07-21 17:52:36,642:INFO:    trans_id trans_date
+22      1036        NaN
+2024-07-21 17:52:36,651:WARNING:Found 1 row/s with valid dates in 'amount' and invalid 'trans_date' values.
+2024-07-21 17:52:36,651:INFO:Transferred dates from 'amount' to 'trans_date' where 'trans_date' was invalid.
+2024-07-21 17:52:36,652:WARNING:Found 2 row/s with non-numeric 'amount' values.
+2024-07-21 17:52:36,653:INFO:Corrected non-numeric 'amount' values based on 'product' prices.
+2024-07-21 17:52:36,654:WARNING:Found 13 transactions with missing user_ids.
+2024-07-21 17:52:36,654:WARNING:Missing user_ids: [6 7 8 9]
+2024-07-21 17:52:36,655:INFO:First few rows of the transactions dataframe:
+2024-07-21 17:52:36,655:INFO:   trans_id  user_id     product  amount trans_date
+0      1014        1  Samsung TV     599 2022-04-01
+1      1015        2        iPad     499 2022-04-05
+2      1016        3     Macbook    1299 2022-04-10
+3      1017        4      iPhone     999 2022-04-15
+4      1018        5  Samsung TV     599 2022-04-20
+2024-07-21 17:52:36,658:INFO:
+Data types of each column:
+2024-07-21 17:52:36,658:INFO:trans_id               int64
+user_id                int64
+product               object
+amount                 int64
+trans_date    datetime64[ns]
+dtype: object
+2024-07-21 17:52:36,659:INFO:
+Missing values in each column:
+2024-07-21 17:52:36,659:INFO:trans_id      0
+user_id       0
+product       0
+amount        0
+trans_date    0
+dtype: int64
+2024-07-21 17:52:36,660:INFO:
+Summary statistics for numeric columns:
+2024-07-21 17:52:36,665:INFO:          trans_id    user_id       amount                     trans_date
+count    71.000000  71.000000    71.000000                             71
+mean   1054.380282   2.929577   708.577465  2023-04-25 09:27:53.239436544
+min    1014.000000   1.000000    89.000000            2022-04-01 00:00:00
+25%    1033.500000   2.000000   499.000000            2022-09-24 12:00:00
+50%    1055.000000   3.000000   599.000000            2023-05-02 00:00:00
+75%    1075.500000   4.000000   999.000000            2023-11-24 12:00:00
+max    1097.000000   5.000000  1299.000000            2024-06-15 00:00:00
+std      24.484611   1.417482   405.650929                            NaN
+2024-07-21 17:52:36,669:INFO:
+Unique value counts for categorical columns:
+2024-07-21 17:52:36,670:INFO:trans_id      71
+user_id        5
+product        5
+amount         5
+trans_date    71
+dtype: int64
+2024-07-21 17:52:36,670:INFO:
+Potential data quality issues in the 'amount' column:
+2024-07-21 17:52:36,672:INFO:Empty DataFrame
+Columns: [trans_id, amount]
+Index: []
+2024-07-21 17:52:36,673:INFO:
+Potential data quality issues in the 'trans_date' column:
+2024-07-21 17:52:36,675:INFO:Empty DataFrame
+Columns: [trans_id, trans_date]
+Index: []
+2024-07-21 17:52:36,677:INFO:Transformed data for users with total amount spent by each user.
+2024-07-21 17:52:36,679:INFO:No new transactions to append.
+2024-07-21 17:52:36,695:INFO:Loaded data into the database d:\1Python Script\Data Engineer\database\etl_database.db.

@@ -1,0 +1,6 @@
+user_id,name,email,date_joined,total_spent
+1,John Doe,johndoe@email.com,2022-01-01,7165
+2,Jane Smith,janesmith@email.com,2022-01-05,10585
+3,Robert Brown,robertbrown@email.net,2022-01-10,14486
+4,Lucy Gray,lucy.gray@email.com,2022-02-01,14586
+5,Michael Green,mgreen@email.org,2022-02-15,3487
